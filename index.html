@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estazolam — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red: #ff4d6d;
+    --red-soft: #ff8fa3;
+    --text: #1c1c1e;
+    --text-soft: #6e6e73;
+    --glass-bg: rgba(255,255,255,0.55);
+    --glass-bg-strong: rgba(255,255,255,0.72);
+    --glass-border: rgba(255,255,255,0.6);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', 'IBM Plex Sans Thai', sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--sans);
+    color:var(--text);
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 10%, #ffb3c1 0%, transparent 45%),
+      radial-gradient(circle at 85% 0%, #ffd9e0 0%, transparent 40%),
+      radial-gradient(circle at 50% 90%, #cfe8ff 0%, transparent 50%),
+      linear-gradient(160deg, #f2f1f6 0%, #e9e7f0 100%);
+    background-attachment: fixed;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--red); color:#fff; }
+
+  .wrap{ max-width:900px; margin:0 auto; padding:0 22px; }
+
+  nav{
+    position:sticky; top:14px; z-index:50;
+    margin:0 auto 0; max-width:900px; padding:0 22px;
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:54px; padding:0 20px;
+    background:var(--glass-bg-strong);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:100px;
+    box-shadow: 0 8px 30px rgba(31,31,40,0.08);
+  }
+  .brand{ font-weight:700; font-size:15px; }
+  .brand .dot{ color:var(--red); }
+  .navlinks{ display:flex; gap:22px; font-size:13.5px; color:var(--text-soft); font-weight:500; }
+  .navlinks a:hover{ color:var(--red); }
+
+  .hero{ padding:64px 0 40px; text-align:left; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11.5px; color:var(--red);
+    background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.25);
+    padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .eyebrow .pulse{ width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  h1{ font-size:clamp(30px,5vw,44px); font-weight:800; line-height:1.2; letter-spacing:-0.02em; margin-bottom:16px; }
+  h1 .accent{ color:var(--red); }
+  .lede{ font-size:16.5px; color:var(--text-soft); max-width:560px; line-height:1.75; font-weight:400; }
+  .lede strong{ color:var(--text); font-weight:600; }
+
+  .glass{
+    background:var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border:1px solid var(--glass-border);
+    border-radius:22px;
+    box-shadow: 0 10px 40px rgba(31,31,40,0.07), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+
+  .sec{ padding:44px 0; }
+  .sec-head{ margin-bottom:22px; }
+  .sec-head .tag{ font-family:var(--mono); font-size:11px; color:var(--red); letter-spacing:0.06em; text-transform:uppercase; font-weight:500; }
+  .sec-head h2{ font-size:22px; font-weight:800; margin-top:4px; }
+  .sec-head p{ font-size:14px; color:var(--text-soft); margin-top:6px; }
+
+  .project{
+    padding:24px 26px;
+    margin-bottom:18px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .project:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 20px 55px rgba(255,77,109,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .project-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:10px; }
+  .project-name{ font-size:19px; font-weight:700; }
+  .project-status{
+    flex-shrink:0; font-family:var(--mono); font-size:10.5px; font-weight:500;
+    padding:4px 11px; border-radius:100px; white-space:nowrap;
+  }
+  .project-status.live{ color:#1a8a4a; background:rgba(26,138,74,0.1); }
+  .project-status.dev{ color:#b8730a; background:rgba(184,115,10,0.1); }
+  .project-desc{ font-size:14.5px; color:var(--text-soft); line-height:1.7; margin-bottom:16px; }
+  .stack{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+  .chip{
+    font-family:var(--mono); font-size:11px; color:var(--text-soft);
+    background:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.8);
+    padding:5px 11px; border-radius:8px;
+  }
+  .project-links{ display:flex; gap:12px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13.5px; font-weight:600;
+    padding:9px 16px; border-radius:100px;
+    transition: all .2s ease;
+  }
+  .btn.primary{ background:var(--red); color:#fff; }
+  .btn.primary:hover{ background:#e63958; }
+  .btn.secondary{ background:rgba(255,255,255,0.6); color:var(--text); border:1px solid rgba(0,0,0,0.08); }
+  .btn.secondary:hover{ background:rgba(255,255,255,0.9); }
+  .btn.disabled{ background:rgba(0,0,0,0.04); color:var(--text-soft); cursor:default; }
+
+  .project.placeholder{ text-align:center; padding:34px 20px; border-style:dashed; background:rgba(255,255,255,0.3); }
+  .project.placeholder:hover{ transform:none; box-shadow:none; }
+  .project.placeholder p{ font-family:var(--mono); font-size:13px; color:var(--text-soft); }
+
+  .about-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .about-card{ padding:20px; text-align:center; }
+  .about-card .num{ font-size:26px; font-weight:800; color:var(--red); }
+  .about-card .lbl{ font-size:12.5px; color:var(--text-soft); margin-top:4px; }
+
+  footer{ padding:40px 0 60px; text-align:center; }
+  footer .glass{ display:inline-flex; align-items:center; gap:16px; padding:16px 28px; }
+  footer .foot-text{ font-size:14px; color:var(--text-soft); }
+  footer a.contact-link{ font-weight:600; color:var(--red); }
+
+  @media (max-width:640px){
+    .navlinks{ display:none; }
+    .about-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">estazolam<span class="dot">.</span>dev</div>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow"><span class="pulse"></span>Available for feedback & collabs</div>
+    <h1>Building software<br>one <span class="accent">side project</span> at a time.</h1>
+    <p class="lede">
+      สวัสดีครับ ผมชื่อโชกุนหรือในนาม <strong>Estazolam</strong>  เป็นมือไหม่ที่ชอบลงมือทำโปรเจกต์จริง ตั้งแต่แอปแชท AI ปากหมา เว็บเกมคลิ้กเกอร์เเละมีมเเมทช์ เว็บสารานุกรม ไปจนถึงเว็บโพสต์แบบไม่ระบุตัวตน
+      ผมชอบใช้ใช้เวลาว่างขลุกอยู่กับการพัฒนาเเละหาความรู้ด้านการเขียนโค้ดเเละเรื่อง IT ทุกอย่างในหน้านี้คือของที่ Deploy เเละใช้งานได้จริงตามเป้าหมายของผมเเล้วครับ
+    </p>
+  </section>
+
+  <section class="sec" id="projects">
+    <div class="sec-head">
+      <div class="tag">Projects</div>
+      <h2>โปรเจกต์ส่วนตัว</h2>
+      <p>โปรเจกต์ต่อไปนี้คือโปรเจกต์ที่ทำต่อเนื่อง เเละอัปเดตเรื่อยๆตามความรู้ที่มี</p>
+    </div>
+
+<div class="glass project">
+  <div class="project-top">
+    <div class="project-name">อัสนี-วสันต์</div>
+    <div class="project-status live">Live · First project</div>
+  </div>
+  <p class="project-desc">
+    เว็บไซต์แฟนคลับ รวบรวมข้อมูลของวงร็อกในตำนานของไทยอย่าง อัสนี-วสันต์ ทั้งประวัติ ผลงานอัลบั้ม รางวัลและเกียรติประวัติตลอดเส้นทาง
+    เป็นโปรเจกต์แรกที่ลงมือทำเว็บจริงๆ จังๆ
+  </p>
+  <div class="stack">
+    <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+  </div>
+  <div class="project-links">
+    <a class="btn primary" href="https://github.com/Raelserlight/Asanee-wasun" target="_blank" rel="noopener">View on GitHub</a>
+    <a class="btn secondary" href="https://raelserlight.github.io/Asanee-wasun/" target="_blank" rel="noopener">Live demo</a>
+  </div>
+</div>
+
+
+    <div class="glass project">
+      <div class="project-top">
+        <div class="project-name">Estazolam AI</div>
+        <div class="project-status live">Live</div>
+      </div>
+      <p class="project-desc">
+        แอปแชท AI ปากหมาเหี้ยๆ ที่พร้อมจะด่าคุณตลอดเวลาไม่ว่าคุณจะถามอะไร เป็นเว็บเเอพแบบ full-stack ที่ผูก API ผู้ให้บริการ AI ฟรี 2 เจ้า (Groq, Gemini)
+        UI สไตล์กระจกฝ้าแบบ iOS พร้อม animation เเนะนำให้ใช้ Gemini เพราะอี Groq มันเอ๋อ
+      </p>
+      <div class="stack">
+        <span class="chip">React 19</span><span class="chip">Vite</span><span class="chip">Tailwind</span>
+        <span class="chip">Express 5</span><span class="chip">MongoDB</span>
+      </div>
+      <div class="project-links">
+        <a class="btn primary" href="https://github.com/Raelserlight/estzl.ai" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn secondary" href="https://estzl-ai-tau.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+      </div>
+    </div>
+
+    <div class="glass project">
+      <div class="project-top">
+        <div class="project-name">GhostBoard</div>
+        <div class="project-status live">Live</div>
+      </div>
+      <p class="project-desc">
+        เว็บบอร์ดโพสต์แบบไม่ระบุตัวตน สำหรับพูดคุยและแชร์แบบไม่ต้องผูกบัญชี deploy อยู่จริงบน Vercel
+        กำลังปรับปรุงหน้า Feed ให้ใช้งานบนมือถือได้ลื่นขึ้น
+      </p>
+      <div class="stack">
+        <span class="chip">React</span><span class="chip">Vercel</span><span class="chip">PostCSS</span>
+      </div>
+      <div class="project-links">
+        <a class="btn primary" href="https://github.com/Raelserlight/fronend" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn secondary" href="https://fronend-steel.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+      </div>
+    </div>
+
+
+<div class="glass project">
+  <div class="project-top">
+    <div class="project-name">Champions Legacy Telemetry</div>
+    <div class="project-status live">Live</div>
+  </div>
+  <p class="project-desc">
+    สารานุกรม F1 แบบ Interactive รวบรวมประวัติแชมป์โลกฟอร์มูล่าวันตั้งแต่ปี 1950-2025 ทั้งฝั่งนักขับและรถ
+    เปิดให้กดไลค์ได้เเบบเรียลไทม์ คอมเมนต์แบบไม่ระบุตัวตน และเสนอแก้ไขข้อมูลที่ผิดได้เอง
+  </p>
+  <div class="stack">
+    <span class="chip">Vanilla JS</span><span class="chip">HTML5</span><span class="chip">CSS3</span>
+    <span class="chip">Firebase</span><span class="chip">Marked.js</span>
+  </div>
+  <div class="project-links">
+    <a class="btn primary" href="https://github.com/Raelserlight/F1-THE-APEX-" target="_blank" rel="noopener">View on GitHub</a>
+    <a class="btn secondary" href="https://raelserlight.github.io/F1-THE-APEX-/" target="_blank" rel="noopener">Live demo</a>
+  </div>
+</div>
+
+<div class="glass project">
+  <div class="project-top">
+    <div class="project-name">Meme Match</div>
+    <div class="project-status live">Live</div>
+  </div>
+  <p class="project-desc">
+    เกมจับคู่มีมสั้นๆ เอาไว้เล่นฆ่าเวลา หยิบมีมมาสุ่มจับคู่ในรูปแบบเกมความจำคลาสสิกสัสๆ
+  </p>
+  <div class="stack">
+    <span class="chip">JavaScript</span><span class="chip">CSS</span><span class="chip">HTML</span>
+  </div>
+  <div class="project-links">
+    <a class="btn primary" href="https://github.com/Raelserlight/Meme-Match" target="_blank" rel="noopener">View on GitHub</a>
+    <a class="btn secondary" href="https://raelserlight.github.io/Meme-Match/" target="_blank" rel="noopener">Live demo</a>
+  </div>
+</div>
+
+
+<div class="glass project">
+  <div class="project-top">
+    <div class="project-name">Hee Heee</div>
+    <div class="project-status live">Live</div>
+  </div>
+  <p class="project-desc">
+    เว็บมีมคลิกเกอร์ กดแล้วมีเสียงฮี๊ฮี พร้อมระบบนับยอดคลิกและ leaderboard ไว้แข่งกันปั่นสกอร์กับเพื่อน
+  </p>
+  <div class="stack">
+    <span class="chip">HTML</span><span class="chip">JavaScript</span>
+  </div>
+  <div class="project-links">
+    <a class="btn primary" href="https://github.com/Raelserlight/Hee-Heee" target="_blank" rel="noopener">View on GitHub</a>
+    <a class="btn secondary" href="https://raelserlight.github.io/Hee-Heee/" target="_blank" rel="noopener">Live demo</a>
+  </div>
+</div>
+
+
+<div class="glass project">
+  <div class="project-top">
+    <div class="project-name">My List</div>
+    <div class="project-status live">Live</div>
+  </div>
+  <p class="project-desc">
+    เว็บ To-do list เรียบง่าย เอาไว้จดสิ่งที่ต้องทำแบบไม่ต้องล็อกอิน เน้นใช้งานไวๆ ไม่มีลูกเล่นเยอะ
+  </p>
+  <div class="stack">
+    <span class="chip">JavaScript</span><span class="chip">Vercel</span>
+  </div>
+  <div class="project-links">
+    <a class="btn primary" href="https://list-15799.vercel.app" target="_blank" rel="noopener">Open app</a>
+  </div>
+</div>
+
+
+  </section>
+
+  <section class="sec" id="about">
+    <div class="sec-head">
+      <div class="tag">About</div>
+      <h2>เบื้องหลังการทำงาน</h2>
+    </div>
+    <div class="about-grid">
+  <div class="glass about-card">
+          <span class="num">Claude &</span>
+      <span class="num">Codex</span>
+    <div class="lbl" style="margin-bottom:10px;">AI ที่ใช้ประจำ</div>
+    <div class="stack" style="justify-content:center; margin-bottom:0;">
+    </div>
+  </div>
+  <div class="glass about-card">
+    <div class="num">Linux Zorin</div>
+    <div class="lbl">ระบบปฏิบัติการหลัก</div>
+  </div>
+  <div class="glass about-card">
+    <div class="num">7</div>
+    <div class="lbl">โปรเจกต์ที่ดูแล</div>
+  </div>
+</div>
+  </section>
+
+<footer id="contact">
+  <div class="glass" style="flex-direction:column; align-items:center; gap:14px; padding:22px 30px;">
+    <span class="num">ช่องทางติดต่อ</span>
+    <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
+      <a class="contact-link" href="https://github.com/Raelserlight" target="_blank" rel="noopener">github.com/Raelserlight</a>
+      <a class="contact-link" href="https://www.facebook.com/share/1BfTGaAaFW/" target="_blank" rel="noopener">facebook.com/gunxiang.gl.binz</a>
+      <a class="contact-link" href="https://www.instagram.com/pozpx" target="_blank" rel="noopener">instagram.com/pozpx</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
