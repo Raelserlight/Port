@@ -7,162 +7,331 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --red: #ff4d6d;
-    --red-soft: #ff8fa3;
-    --text: #1c1c1e;
-    --text-soft: #6e6e73;
-    --glass-bg: rgba(255,255,255,0.55);
-    --glass-bg-strong: rgba(255,255,255,0.72);
-    --glass-border: rgba(255,255,255,0.6);
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', 'IBM Plex Sans Thai', sans-serif;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  body{
-    font-family:var(--sans);
-    color:var(--text);
-    min-height:100vh;
-    background:
-      radial-gradient(circle at 15% 10%, #ffb3c1 0%, transparent 45%),
-      radial-gradient(circle at 85% 0%, #ffd9e0 0%, transparent 40%),
-      radial-gradient(circle at 50% 90%, #cfe8ff 0%, transparent 50%),
-      linear-gradient(160deg, #f2f1f6 0%, #e9e7f0 100%);
-    background-attachment: fixed;
-  }
-  a{ color:inherit; text-decoration:none; }
-  ::selection{ background:var(--red); color:#fff; }
+:root{
+  --red: #ff4d6d;
+  --red-soft: #ff8fa3;
+  --text: #1c1c1e;
+  --text-soft: #6e6e73;
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.6);
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', 'IBM Plex Sans Thai', sans-serif;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 10%, #ffb3c1 0%, transparent 45%),
+    radial-gradient(circle at 85% 0%, #ffd9e0 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, #cfe8ff 0%, transparent 50%),
+    linear-gradient(160deg, #f2f1f6 0%, #e9e7f0 100%);
+  background-attachment: fixed;
+}
+a{ color:inherit; text-decoration:none; }
+::selection{ background:var(--red); color:#fff; }
 
-  .wrap{ max-width:900px; margin:0 auto; padding:0 22px; }
+.wrap{ max-width:900px; margin:0 auto; padding:0 22px; }
 
-  nav{
-    position:sticky; top:14px; z-index:50;
-    margin:0 auto 0; max-width:900px; padding:0 22px;
-  }
-  .nav-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    height:54px; padding:0 20px;
-    background:var(--glass-bg-strong);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border:1px solid var(--glass-border);
-    border-radius:100px;
-    box-shadow: 0 8px 30px rgba(31,31,40,0.08);
-  }
-  .brand{ font-weight:700; font-size:15px; }
-  .brand .dot{ color:var(--red); }
-  .navlinks{ display:flex; gap:22px; font-size:13.5px; color:var(--text-soft); font-weight:500; }
-  .navlinks a:hover{ color:var(--red); }
+nav{
+  position:sticky; top:14px; z-index:50;
+  margin:0 auto 0; max-width:900px; padding:0 22px;
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:54px; padding:0 20px;
+  background:var(--glass-bg-strong);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border:1px solid var(--glass-border);
+  border-radius:100px;
+  box-shadow: 0 8px 30px rgba(31,31,40,0.08);
+}
+.brand{ font-weight:700; font-size:15px; }
+.brand .dot{ color:var(--red); }
+.navlinks{ display:flex; gap:22px; font-size:13.5px; color:var(--text-soft); font-weight:500; }
+.navlinks a:hover{ color:var(--red); }
 
-  .hero{ padding:64px 0 40px; text-align:left; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--mono); font-size:11.5px; color:var(--red);
-    background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.25);
-    padding:6px 12px; border-radius:100px; margin-bottom:20px;
-  }
-  .eyebrow .pulse{ width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 2s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+/* ---------- hero (centered) ---------- */
+.hero{ padding:64px 0 40px; text-align:center; }
 
-  h1{ font-size:clamp(30px,5vw,44px); font-weight:800; line-height:1.2; letter-spacing:-0.02em; margin-bottom:16px; }
-  h1 .accent{ color:var(--red); }
-  .lede{ font-size:16.5px; color:var(--text-soft); max-width:560px; line-height:1.75; font-weight:400; }
-  .lede strong{ color:var(--text); font-weight:600; }
+.avatar{
+  width:96px; height:96px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:36px; color:#fff;
+  background: linear-gradient(135deg, var(--red), #ff8fa3);
+  box-shadow: 0 8px 24px rgba(255,77,109,0.35), inset 0 1px 0 rgba(255,255,255,0.4);
+  margin:0 auto 20px;
+  overflow:hidden;
+}
+.avatar img{ width:100%; height:100%; object-fit:cover; }
 
-  .glass{
-    background:var(--glass-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border:1px solid var(--glass-border);
-    border-radius:22px;
-    box-shadow: 0 10px 40px rgba(31,31,40,0.07), inset 0 1px 0 rgba(255,255,255,0.5);
-  }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:11.5px; color:var(--red);
+  background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.25);
+  padding:6px 12px; border-radius:100px; margin-bottom:20px;
+}
+.eyebrow .pulse{ width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-  .sec{ padding:44px 0; }
-  .sec-head{ margin-bottom:22px; }
-  .sec-head .tag{ font-family:var(--mono); font-size:11px; color:var(--red); letter-spacing:0.06em; text-transform:uppercase; font-weight:500; }
-  .sec-head h2{ font-size:22px; font-weight:800; margin-top:4px; }
-  .sec-head p{ font-size:14px; color:var(--text-soft); margin-top:6px; }
+h1{ font-size:clamp(30px,5vw,44px); font-weight:800; line-height:1.2; letter-spacing:-0.02em; margin-bottom:16px; }
+h1 .accent{ color:var(--red); }
+.lede{ font-size:16.5px; color:var(--text-soft); max-width:560px; line-height:1.75; font-weight:400; margin:0 auto; }
+.lede strong{ color:var(--text); font-weight:600; }
 
-  .project{
-    padding:24px 26px;
-    margin-bottom:18px;
-    transition: transform .25s ease, box-shadow .25s ease;
-  }
-  .project:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 20px 55px rgba(255,77,109,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
-  }
-  .project-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:10px; }
-  .project-name{ font-size:19px; font-weight:700; }
-  .project-status{
-    flex-shrink:0; font-family:var(--mono); font-size:10.5px; font-weight:500;
-    padding:4px 11px; border-radius:100px; white-space:nowrap;
-  }
-  .project-status.live{ color:#1a8a4a; background:rgba(26,138,74,0.1); }
-  .project-status.dev{ color:#b8730a; background:rgba(184,115,10,0.1); }
-  .project-desc{ font-size:14.5px; color:var(--text-soft); line-height:1.7; margin-bottom:16px; }
-  .stack{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
-  .chip{
-    font-family:var(--mono); font-size:11px; color:var(--text-soft);
-    background:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.8);
-    padding:5px 11px; border-radius:8px;
-  }
-  .project-links{ display:flex; gap:12px; }
-  .btn{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:13.5px; font-weight:600;
-    padding:9px 16px; border-radius:100px;
-    transition: all .2s ease;
-  }
-  .btn.primary{ background:var(--red); color:#fff; }
-  .btn.primary:hover{ background:#e63958; }
-  .btn.secondary{ background:rgba(255,255,255,0.6); color:var(--text); border:1px solid rgba(0,0,0,0.08); }
-  .btn.secondary:hover{ background:rgba(255,255,255,0.9); }
-  .btn.disabled{ background:rgba(0,0,0,0.04); color:var(--text-soft); cursor:default; }
+/* ---------- glass base ---------- */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border:1px solid var(--glass-border);
+  border-radius:22px;
+  box-shadow: 0 10px 40px rgba(31,31,40,0.07), inset 0 1px 0 rgba(255,255,255,0.5);
+}
 
-  .project.placeholder{ text-align:center; padding:34px 20px; border-style:dashed; background:rgba(255,255,255,0.3); }
-  .project.placeholder:hover{ transform:none; box-shadow:none; }
-  .project.placeholder p{ font-family:var(--mono); font-size:13px; color:var(--text-soft); }
+.sec{ padding:44px 0; }
+.sec-head{ margin-bottom:22px; text-align:center; }
+.sec-head .tag{ font-family:var(--mono); font-size:11px; color:var(--red); letter-spacing:0.06em; text-transform:uppercase; font-weight:500; }
+.sec-head h2{ font-size:22px; font-weight:800; margin-top:4px; }
+.sec-head p{ font-size:14px; color:var(--text-soft); margin-top:6px; }
 
-  .about-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .about-card{ padding:20px; text-align:center; }
-  .about-card .num{ font-size:26px; font-weight:800; color:var(--red); }
-  .about-card .lbl{ font-size:12.5px; color:var(--text-soft); margin-top:4px; }
+/* ---------- project cards (centered) ---------- */
+.project{
+  padding:24px 26px;
+  margin-bottom:18px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.project:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 20px 55px rgba(255,77,109,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.project-top{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  text-align:center;
+}
+.project-name{ font-size:19px; font-weight:700; }
+.project-status{
+  flex-shrink:0; font-family:var(--mono); font-size:10.5px; font-weight:500;
+  padding:4px 11px; border-radius:100px; white-space:nowrap;
+}
+.project-status.live{ color:#1a8a4a; background:rgba(26,138,74,0.1); }
+.project-status.dev{ color:#b8730a; background:rgba(184,115,10,0.1); }
+.project-desc{ font-size:14.5px; color:var(--text-soft); line-height:1.7; margin-bottom:16px; text-align:center; }
+.stack{ display:flex; flex-wrap:wrap; justify-content:center; gap:7px; margin-bottom:18px; }
+.chip{
+  font-family:var(--mono); font-size:11px; color:var(--text-soft);
+  background:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.8);
+  padding:5px 11px; border-radius:8px;
+}
+.project-links{ display:flex; justify-content:center; gap:12px; }
+.btn{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:13.5px; font-weight:600;
+  padding:9px 16px; border-radius:100px;
+  transition: all .2s ease;
+}
+.btn.primary{ background:var(--red); color:#fff; }
+.btn.primary:hover{ background:#e63958; }
+.btn.secondary{ background:rgba(255,255,255,0.6); color:var(--text); border:1px solid rgba(0,0,0,0.08); }
+.btn.secondary:hover{ background:rgba(255,255,255,0.9); }
+.btn.disabled{ background:rgba(0,0,0,0.04); color:var(--text-soft); cursor:default; }
 
-  footer{ padding:40px 0 60px; text-align:center; }
-  footer .glass{ display:inline-flex; align-items:center; gap:16px; padding:16px 28px; }
-  footer .foot-text{ font-size:14px; color:var(--text-soft); }
-  footer a.contact-link{ font-weight:600; color:var(--red); }
+.project.placeholder{ text-align:center; padding:34px 20px; border-style:dashed; background:rgba(255,255,255,0.3); }
+.project.placeholder:hover{ transform:none; box-shadow:none; }
+.project.placeholder p{ font-family:var(--mono); font-size:13px; color:var(--text-soft); }
 
-  @media (max-width:640px){
-    .navlinks{ display:none; }
-    .about-grid{ grid-template-columns:1fr; }
-  }
+/* ---------- about + stats ---------- */
+.about-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.about-card{ padding:20px; text-align:center; }
+.about-card .num{ font-size:26px; font-weight:800; color:var(--red); }
+.about-card .lbl{ font-size:12.5px; color:var(--text-soft); margin-top:4px; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:14px; }
+.stat-card{ padding:20px; text-align:center; }
+.stat-card .num{ font-size:24px; font-weight:800; color:var(--red); min-height:30px; }
+.stat-card .lbl{ font-size:11.5px; color:var(--text-soft); margin-top:4px; }
+
+/* ---------- footer / social ---------- */
+footer{ padding:40px 0 60px; text-align:center; }
+footer .glass{ display:inline-flex; align-items:center; gap:16px; padding:16px 28px; }
+footer .foot-text{ font-size:14px; color:var(--text-soft); }
+footer a.contact-link{ font-weight:600; color:var(--red); }
+
+.social-row{ display:flex; gap:10px; }
+.social-icon{
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.8);
+  transition: all .2s ease;
+}
+.social-icon:hover{ background:var(--red); transform:translateY(-2px); }
+.social-icon:hover svg{ fill:#fff; }
+.social-icon svg{ width:18px; height:18px; fill:var(--text-soft); transition:fill .2s ease; }
+
+/* ---------- scroll reveal ---------- */
+.reveal{
+  opacity:0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform: translateY(0);
+}
+
+@media (max-width:640px){
+  .navlinks{ display:none; }
+  .about-grid{ grid-template-columns:1fr; }
+  .stats-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ---------- dark mode ---------- */
+body{ transition: background .4s ease, color .4s ease; }
+.glass{ transition: background .4s ease, border-color .4s ease; }
+
+body.dark{
+  color: #e8e6e3;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,77,109,0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(255,77,109,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(120,160,255,0.08) 0%, transparent 50%),
+    linear-gradient(160deg, #0f0e12 0%, #16151a 100%);
+}
+body.dark .glass{
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.09);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+body.dark .nav-inner{
+  background: rgba(20,19,24,0.7);
+  border-color: rgba(255,255,255,0.09);
+}
+body.dark .text-soft,
+body.dark .lede,
+body.dark .foot-text,
+body.dark .project-desc,
+body.dark .sec-head p,
+body.dark .navlinks,
+body.dark .chip,
+body.dark .about-card .lbl,
+body.dark .stat-card .lbl{
+  color: #9a99a2;
+}
+body.dark .chip{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+  color:#c9c8cf;
+}
+body.dark .btn.secondary{
+  background: rgba(255,255,255,0.08);
+  color: #e8e6e3;
+  border-color: rgba(255,255,255,0.12);
+}
+body.dark .social-icon{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+}
+body.dark .social-icon svg{ fill:#9a99a2; }
+body.dark .project.placeholder{ background: rgba(255,255,255,0.02); }
+
+.theme-toggle{
+  width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,0.5); border:1px solid rgba(0,0,0,0.06);
+  cursor:pointer; transition: all .2s ease; flex-shrink:0;
+}
+.theme-toggle:hover{ background:var(--red); }
+.theme-toggle:hover svg{ stroke:#fff; }
+.theme-toggle svg{ width:16px; height:16px; stroke:var(--text-soft); transition:stroke .2s ease; }
+body.dark .theme-toggle{ background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.12); }
+
+/* ---------- timeline ---------- */
+.timeline{ position:relative; padding:10px 0; }
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%; top:0; bottom:0;
+  width:2px;
+  background: linear-gradient(180deg, rgba(255,77,109,0.05), rgba(255,77,109,0.35), rgba(255,77,109,0.05));
+  transform:translateX(-50%);
+}
+.timeline-item{
+  position:relative;
+  width:50%;
+  padding:0 32px 40px;
+}
+.timeline-item:nth-child(odd){ left:0; text-align:right; }
+.timeline-item:nth-child(even){ left:50%; text-align:left; }
+.timeline-dot{
+  position:absolute; top:2px;
+  width:14px; height:14px; border-radius:50%;
+  background:var(--red);
+  box-shadow: 0 0 0 4px rgba(255,77,109,0.18), 0 4px 12px rgba(255,77,109,0.4);
+}
+.timeline-item:nth-child(odd) .timeline-dot{ right:-7px; }
+.timeline-item:nth-child(even) .timeline-dot{ left:-7px; }
+.timeline-date{
+  font-family:var(--mono); font-size:11px; color:var(--red); font-weight:600;
+  margin-bottom:4px; letter-spacing:0.03em;
+}
+.timeline-name{ font-size:15.5px; font-weight:700; }
+
+@media (max-width:640px){
+  .timeline::before{ left:14px; }
+  .timeline-item{ width:100%; text-align:left !important; padding:0 0 32px 40px; left:0 !important; }
+  .timeline-item .timeline-dot{ left:8px !important; right:auto !important; }
+}
+
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <div class="brand">estazolam<span class="dot">.</span>dev</div>
+<div class="nav-inner">
+  <div class="brand">estazolam<span class="dot">.</span>dev</div>
+  <div style="display:flex; align-items:center; gap:18px;">
     <div class="navlinks">
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="#journey">Journey</a>
     </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
   </div>
+</div>
 </nav>
 
 <div class="wrap">
 
-  <section class="hero">
-    <div class="eyebrow"><span class="pulse"></span>Available for feedback & collabs</div>
-    <h1>Building software<br>one <span class="accent">side project</span> at a time.</h1>
+<section class="hero">
+<div class="avatar">
+  <img src="https://github.com/Raelserlight.png" alt="Estazolam">
+</div>
+  <div class="eyebrow"><span class="pulse"></span>Available for feedback & collabs</div>
+  <h1>Building software<br>one <span class="accent">side project</span> at a time.</h1>
     <p class="lede">
-      สวัสดีครับ ผมชื่อโชกุนหรือในนาม <strong>Estazolam</strong>  เป็นมือไหม่ที่ชอบลงมือทำโปรเจกต์จริง ตั้งแต่แอปแชท AI ปากหมา เว็บเกมคลิ้กเกอร์เเละมีมเเมทช์ เว็บสารานุกรม ไปจนถึงเว็บโพสต์แบบไม่ระบุตัวตน
-      ผมชอบใช้เวลาว่างขลุกอยู่กับการพัฒนาเเละหาความรู้ด้านการเขียนโค้ดเเละเรื่อง IT ทุกอย่างในหน้านี้คือของที่ Deploy เเละใช้งานได้จริงตามเป้าหมายของผมเเล้วครับ
+      สวัสดีครับ ผมชื่อโชกุน หรือในนาม <span style="color:var(--red); font-weight:600;">Estazolam</span>  เป็นมือไหม่ที่เริ่มต้นเขียนโค้ดจากศูนย์
+แรงบันดาลใจส่วนหนึ่งมาจาก <span style="color:var(--red); font-weight:600;">9arm</span> ตอนนี้ใช้งาน <span style="color:var(--red); font-weight:600;">MERN Stack</span> เป็นหลัก เเละยังเรียนรู้เพิ่มอยู่เรื่อยๆ ทุกโปรเจกต์ในหน้านี้คือของที่ทำเสร็จและใช้งานได้จริงครับ
     </p>
   </section>
 
@@ -173,7 +342,7 @@
       <p>โปรเจกต์ต่อไปนี้คือโปรเจกต์ที่ทำต่อเนื่อง เเละอัปเดตเรื่อยๆตามความรู้ที่มี</p>
     </div>
 
-<div class="glass project">
+<div class="glass project reveal">
   <div class="project-top">
     <div class="project-name">อัสนี-วสันต์</div>
     <div class="project-status live">Live · First project</div>
@@ -192,7 +361,7 @@
 </div>
 
 
-    <div class="glass project">
+    <div class="glass project reveal">
       <div class="project-top">
         <div class="project-name">Estazolam AI</div>
         <div class="project-status live">Live</div>
@@ -211,7 +380,7 @@
       </div>
     </div>
 
-    <div class="glass project">
+    <div class="glass project reveal">
       <div class="project-top">
         <div class="project-name">GhostBoard</div>
         <div class="project-status live">Live</div>
@@ -230,7 +399,7 @@
     </div>
 
 
-<div class="glass project">
+<div class="glass project reveal">
   <div class="project-top">
     <div class="project-name">Champions Legacy Telemetry</div>
     <div class="project-status live">Live</div>
@@ -249,7 +418,7 @@
   </div>
 </div>
 
-<div class="glass project">
+<div class="glass project reveal">
   <div class="project-top">
     <div class="project-name">Meme Match</div>
     <div class="project-status live">Live</div>
@@ -267,7 +436,7 @@
 </div>
 
 
-<div class="glass project">
+<div class="glass project reveal">
   <div class="project-top">
     <div class="project-name">Hee Heee</div>
     <div class="project-status live">Live</div>
@@ -285,7 +454,7 @@
 </div>
 
 
-<div class="glass project">
+<div class="glass project reveal">
   <div class="project-top">
     <div class="project-name">My List</div>
     <div class="project-status live">Live</div>
@@ -304,41 +473,156 @@
 
   </section>
 
+  <section class="sec" id="journey">
+  <div class="sec-head">
+    <div class="tag">Timeline</div>
+    <h2>เส้นทางที่ผ่านมา</h2>
+    <p>ลำดับโปรเจกต์ตามวันที่ Deploy ตั้งแต่ตัวแรกสุด</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">8 มิถุนายน</div>
+      <div class="timeline-name">อัสนี-วสันต์</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">19 มิถุนายน</div>
+      <div class="timeline-name">Hee Heee</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">24 มิถุนายน</div>
+      <div class="timeline-name">Champions Legacy Telemetry</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">28 มิถุนายน</div>
+      <div class="timeline-name">Meme Match</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2 กรกฎาคม</div>
+      <div class="timeline-name">My List</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">10 กรกฎาคม</div>
+      <div class="timeline-name">GhostBoard</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">23 กรกฎาคม</div>
+      <div class="timeline-name">Estazolam AI</div>
+    </div>
+  </div>
+</section>
+
   <section class="sec" id="about">
     <div class="sec-head">
       <div class="tag">About</div>
       <h2>เบื้องหลังการทำงาน</h2>
     </div>
     <div class="about-grid">
-  <div class="glass about-card">
+  <div class="glass about-card reveal">
           <span class="num">Claude &</span>
       <span class="num">Codex</span>
     <div class="lbl" style="margin-bottom:10px;">AI ที่ใช้ประจำ</div>
     <div class="stack" style="justify-content:center; margin-bottom:0;">
     </div>
   </div>
-  <div class="glass about-card">
+  <div class="glass about-card reveal">
     <div class="num">Linux Zorin</div>
     <div class="lbl">ระบบปฏิบัติการหลัก</div>
   </div>
-  <div class="glass about-card">
+  <div class="glass about-card reveal">
+    <div class="num">MERN stack</div>
+    <div class="lbl">Tech Stack ที่ใช้</div>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="glass stat-card reveal">
+    <div class="num" id="statRepos">···</div>
+    <div class="lbl">Public repos บน GitHub</div>
+  </div>
+  <div class="glass stat-card reveal">
+    <div class="num" id="statLang">···</div>
+    <div class="lbl">ภาษาที่ใช้บ่อยสุด</div>
+  </div>
+  <div class="glass stat-card reveal">
     <div class="num">7</div>
+    <div class="lbl">โปรเจกต์ที่ deploy เเล้ว</div>
+  </div>
+  <div class="glass stat-card reveal">
+    <div class="num">13</div>
     <div class="lbl">โปรเจกต์ที่ดูแล</div>
   </div>
 </div>
   </section>
 
 <footer id="contact">
-  <div class="glass" style="flex-direction:column; align-items:center; gap:14px; padding:22px 30px;">
-    <span class="num">ช่องทางติดต่อ</span>
-    <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
-      <a class="contact-link" href="https://github.com/Raelserlight" target="_blank" rel="noopener">github.com/Raelserlight</a>
-      <a class="contact-link" href="https://www.facebook.com/share/1BfTGaAaFW/" target="_blank" rel="noopener">facebook.com/gunxiang.gl.binz</a>
-      <a class="contact-link" href="https://www.instagram.com/pozpx" target="_blank" rel="noopener">instagram.com/pozpx</a>
+  <div class="glass" style="flex-direction:column; align-items:center; gap:16px; padding:24px 32px;">
+    <span class="foot-text">ช่องทางติดต่อ</span>
+    <div class="social-row">
+      <a class="social-icon" href="https://github.com/Raelserlight" target="_blank" rel="noopener" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.93.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.facebook.com/share/1BfTGaAaFW/" target="_blank" rel="noopener" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.instagram.com/pozpx" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.02-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.35 2.63 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.63 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.63-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 </div>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+
+<script>
+fetch('https://api.github.com/users/Raelserlight')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('statRepos').textContent = data.public_repos ?? '—';
+  })
+  .catch(() => { document.getElementById('statRepos').textContent = '—'; });
+
+fetch('https://api.github.com/users/Raelserlight/repos?per_page=100')
+  .then(r => r.json())
+  .then(repos => {
+    const counts = {};
+    repos.forEach(r => { if(r.language) counts[r.language] = (counts[r.language]||0) + 1; });
+    const top = Object.entries(counts).sort((a,b) => b[1]-a[1])[0];
+    document.getElementById('statLang').textContent = top ? top[0] : '—';
+  })
+  .catch(() => { document.getElementById('statLang').textContent = '—'; });
+</script>
+
+<script>
+const toggleBtn = document.getElementById('themeToggle');
+const body = document.body;
+
+if(localStorage.getItem('theme') === 'dark'){ body.classList.add('dark'); }
+
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+});
+</script>
 
 </body>
 </html>
